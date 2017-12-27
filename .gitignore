@@ -8,3 +8,7 @@
 *_BuiltData.uasset
 RoomEscape/Content/StarterContent/
 *.db
+*.db-wal
+*.opendb
+*.db-shm
+*.ipch
