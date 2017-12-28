@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PositionReport.h"
+
+#include "RoomEscape.h"
 #include "GameFramework/Actor.h"
 
 
@@ -20,12 +22,11 @@ void UPositionReport::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
 	FString ObjectName = GetOwner()->GetName();
-	
-	// UE_LOG(LogTemp, Warning, TEXT("PositionReport called on %s!"), *GetOwner()->GetName());	
-	UE_LOG(LogTemp, Warning, TEXT("PositionReport called on %s!"), *ObjectName);
+	FVector ObjectPos = GetOwner()->GetActorLocation();
+	// same as ObjectPost = FVector ObjectTranform = GetOwner()->GetTransform().GetLocation();
 
+	UE_LOG(LogTemp, Warning, TEXT("%s is at %s"), *ObjectName, *ObjectPos.ToString());
 }
 
 
