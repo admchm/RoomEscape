@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "OpenDoor.h"
-
+#include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -19,8 +19,12 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	// Find owning actor
+
+	auto Owner = GetOwner()->GetName();
+	auto OwnerRotation = GetOwner()->GetActorRotation();
+	UE_LOG(LogTemp, Warning, TEXT("%s rotation values: %s"), *Owner, *OwnerRotation.ToString());
+
 }
 
 
