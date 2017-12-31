@@ -21,9 +21,12 @@ void UOpenDoor::BeginPlay()
 
 	// Find owning actor
 
-	auto Owner = GetOwner()->GetName();
+	AActor* Owner = GetOwner();
+	FRotator NewRotation = FRotator(0.0f, 90.0f, 0.0f);
+
+	Owner->SetActorRotation(NewRotation);
 	auto OwnerRotation = GetOwner()->GetActorRotation();
-	UE_LOG(LogTemp, Warning, TEXT("%s rotation values: %s"), *Owner, *OwnerRotation.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT("%s rotation values: %s"), *Owner, *OwnerRotation.ToString());
 
 }
 
