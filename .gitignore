@@ -6,7 +6,8 @@
 */Intermediate
 */Saved
 *_BuiltData.uasset
-RoomEscape/Content/StarterContent/
+RoomEscape/Content/StarterContent/Textures
+RoomEscape/Content/StarterContent/HDRI
 *.db
 *.db-wal
 *.opendb
