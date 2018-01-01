@@ -3,6 +3,9 @@
 #include "ItemsGrabber.h"
 #include "GameFramework/Actor.h"
 
+#define OUT
+
+
 // Sets default values for this component's properties
 UItemsGrabber::UItemsGrabber()
 {
@@ -28,6 +31,20 @@ void UItemsGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// Get player view point this tick
+	
+	FVector PlayerViewpointLocation;
+	FRotator PlayerViewpointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewpointLocation, OUT PlayerViewpointRotation);
+
+	/*UE_LOG(LogTemp, Warning, TEXT("ViewpointLocation: %s, PlayerViewpointRotation: %s"), 
+		*PlayerViewpointLocation.ToString(), 
+		*PlayerViewpointRotation.ToString()
+	);*/
+
+	FVector LineTraceEnd = PlayerViewpointLocation + (PlayerViewpointRotation.Vector() * Reach);
+	
+	const FColor LineTraceColor = FColor(255, 0, 0, 255);
+	DrawDebugLine(GetWorld(), PlayerViewpointLocation, LineTraceEnd, LineTraceColor, false, 0.0f, 0, 5.0f);
 }
 
